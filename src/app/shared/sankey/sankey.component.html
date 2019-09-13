@@ -1,0 +1,32 @@
+<!-- <div class="d3-chart" #chart></div> -->
+
+<svg width="100%" height="100%" #svg>
+  <g class="nodes">
+    <rect class="node" *ngFor="let node of sankeyLayout?.nodes;let $index"
+      [attr.x]="node.x0" [attr.y]="node.y0"
+      [attr.width]="node.x1 - node.x0" [attr.height]="node.y1 - node.y0"
+      [attr.fill]="colorScale(node.color)">
+      <title>{{ node.name }}</title>
+    </rect>
+  </g>
+
+  <g class="links">
+    <g class="link" *ngFor="let link of sankeyLayout?.links;let $index">
+      <path [attr.d]="link.path"
+        [attr.stroke]="link.color"
+        [attr.stroke-width]="link.width"
+        [attr.title]="link.source.name + ' -> ' + link.target.name">
+      </path>
+      <title>{{ link.source.name + ' -> ' + link.target.name }}</title>
+    </g>
+  </g>
+
+  <g class="labels">
+    <g class="node-label" *ngFor="let node of sankeyLayout?.nodes;let $index;">
+      <text [attr.x]="node.labelPosition.x"
+      [attr.y]="node.labelPosition.y"
+      [attr.dy]="node.labelPosition.dy"> {{ node.labelPosition.labelValue }} </text>
+    </g>
+
+  </g>
+</svg>

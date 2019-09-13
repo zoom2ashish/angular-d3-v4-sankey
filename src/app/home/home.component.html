@@ -1,0 +1,7 @@
+<h3>Sankey Chart</h3>
+<!-- <app-barchart *ngIf="chartData" [data]="chartData"></app-barchart> -->
+<div class="m-1">
+  <button class="btn btn-primary m-1" (click)="useDataset1()">Dataset 1</button>
+  <button class="btn btn-primary m-1" (click)="useDataset2()">Dataset 2</button>
+</div>
+<app-sankey [nodes]="nodes" [links]="links"></app-sankey>
